@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<h1>Hello</h1>
+	<button onclick="paymentStart">Pay</button>
+</body>
+
+</html>
+
+
+<script>
+	
+	const paymentStart = () =>{
+	}
+	
+	$.ajax(
+		{
+			url : '/payment/pay',
+		//	data:JSON.stringify({amount:amount,info:'order_req'}),
+			contentType:'application/json',
+			type:'POST',
+			dataType:'json',
+			success:function(response){
+				
+				if(response.status == "created"){
+					
+					let option ={
+						"key": "rzp_test_RrqZOQ68kp057g",
+  						"amount": response.amount, 
+    					"currency": "INR",
+    					"name": "SMART PARKING SYSTEM",
+    					"description": "Test Transaction",
+                        "order_id": response.id, 
+    					handler:function(response){
+							console.log(response.razorpay_payment_id);
+						}
+					};
+					
+					let rzp = new Razorpay(option);
+					
+					rzp.on("payment.failed",function(response){
+						alert("Payment failed");
+					});
+					
+					rzp.open();
+				}
+			},
+			error:function(error){
+				console.log(error)
+			}
+		}
+	)
+</script>
