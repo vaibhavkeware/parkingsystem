@@ -7,22 +7,29 @@
 </head>
 <body>
 	    <form th:action="@{/home/signup}" th:object="${user}" method="post">
-        <label>Username:</label>
-        <input type="text" th:field="*{userName}" />
-        <br/>
-        <label>Email:</label>
-        <input type="text" th:field="*{mail}" />
-        <br/>
-        <label>Mobile:</label>
-        <input type="text" th:field="*{mobile}" />
-        <br/>
-        <label>Password:</label>
-        <input type="text" th:field="*{password}" />
-        <br/>
-        <label>Role:</label>
-        <input type="text" th:field="*{Role}" />
-        <br/>
-        <button type="submit">Add User</button>
+			<div class="two-forms">
+			                <div class="input-box">
+			                    <input type="text" class="input-field" placeholder="Firstname" th:field="*{firstName}">
+			                    <i class="bx bx-user"></i>
+			                </div>
+			                <div class="input-box">
+			                    <input type="text" class="input-field" placeholder="Lastname" th:field="*{lastName}">
+			                    <i class="bx bx-user"></i>
+			                </div>
+			            </div>
+			            <div class="input-box">
+			                <input type="text" class="input-field" placeholder="Email" th:field="*{mail}">
+			                <i class="bx bx-envelope"></i>
+			            </div>
+			            <div class="input-box">
+			                <input type="password" class="input-field" placeholder="Password" th:field="*{password}">
+			                <i class="bx bx-lock-alt"></i>
+			            </div>
+			            <div class="input-box">
+			                <input type="submit" class="submit" value="Register">
+			            </div>
+			            
+			        </div>
     </form>
 	
 </body>

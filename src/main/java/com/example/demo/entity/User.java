@@ -14,45 +14,29 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	
-	private String userName;
+	private String firstName;
 	
-	private String mobile;
-	
+	private String lastName;
+		
 	private String mail;
 	
 	private String password;
 	
-	private String Role;
+	private String role;
 
-	public User(int userId, String userName, String mobile, String mail, String password, String role) {
+	public User(int userId, String firstName, String mail, String password, String role, String lastName) {
 		super();
 		this.userId = userId;
-		this.userName = userName;
-		this.mobile = mobile;
+		this.firstName = firstName;
 		this.mail = mail;
 		this.password = password;
-		Role = role;
+		this.role = role;
+		this.lastName = lastName;
 	}
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
 	}
 
 	public String getMail() {
@@ -72,11 +56,27 @@ public class User {
 	}
 
 	public String getRole() {
-		return Role;
+		return role;
 	}
 
 	public void setRole(String role) {
-		Role = role;
+		this.role = role;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 		
 }
